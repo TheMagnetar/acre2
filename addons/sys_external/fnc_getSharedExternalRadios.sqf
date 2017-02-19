@@ -22,6 +22,6 @@ private _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
 
 if (!(alive _unit) || (captive _unit)) exitWith {_radioList};
 
-private _sharedRadios = _radioList select {[_x, "getState", "isShared"] call EFUNC(sys_data,dataEvent)};
+private _sharedRadios = _radioList select {[_x] call FUNC(isRadioShared)};
 
 _sharedRadios;

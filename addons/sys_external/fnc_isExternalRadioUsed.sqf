@@ -17,6 +17,6 @@
 
 params ["_radioId"];
 
-private _isUsedExternally = ([_radioId, "getState", "isUsedExternally"] call EFUNC(sys_data,dataEvent)) select 0;
+private _isUsedExternally = ([_radioId] call FUNC(getExternalUseStatus)) select 1;
 
 _isUsedExternally

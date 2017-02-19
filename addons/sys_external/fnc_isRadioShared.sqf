@@ -17,6 +17,6 @@
 
 params ["_radioId"];
 
-private _isShared = [_radioId, "getState", "isShared"] call EFUNC(sys_data,dataEvent);
+private _isShared = ([_radioId] call FUNC(getExternalUseStatus)) select 0;
 
 _isShared

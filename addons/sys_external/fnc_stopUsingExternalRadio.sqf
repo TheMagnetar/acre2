@@ -33,7 +33,7 @@ systemChat format ["Stop using %1", _radioId];
 
 if (_target == _owner) then {
     // Give radio back to the owner
-    [_radioId, "setState", ["isUsedExternally", [false, nil, nil]]] call EFUNC(sys_data,dataEvent);
+    [_radioId, [true, false, nil, nil]] call FUNC(setExternalUseStatus);
 } else {
     // Give radio to another player
     [_radioId, _owner, _target] remoteExecCall [QFUNC(startUsingExternalRadio), _target, false];

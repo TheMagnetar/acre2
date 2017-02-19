@@ -19,7 +19,7 @@
 
 params ["_radioID", "_owner", "_endUser"];
 
-[_radioId, "setState", ["isUsedExternally", [true, _owner, _endUser]]] call EFUNC(sys_data,dataEvent);
+[_radioId, [true, true, _owner, _endUser]] call FUNC(setExternalUseStatus);
 
 // Add the radio to the player
 ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
