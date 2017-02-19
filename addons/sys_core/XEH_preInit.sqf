@@ -76,6 +76,7 @@ DGVAR(languages) = [];
 DVAR(ACRE_TEST_OCCLUSION) = true;
 DVAR(ACRE_SIGNAL_DEBUGGING) = 0;
 
+GVAR(externalStatus) = HASH_CREATE;
 DVAR(ACRE_ACTIVE_EXTERNAL_RADIOS) = [];
 
 acre_player = player;

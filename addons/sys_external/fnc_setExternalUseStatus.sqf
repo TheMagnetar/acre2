@@ -20,5 +20,5 @@
 
 params ["_radioID", "_externalStatus"];
 
-HASH_SET(GVAR(externalStatus), _radioId, _externalStatus);
-publicVariable QGVAR(externalStatus);
+HASH_SET(EGVAR(sys_core,externalStatus), _radioId, _externalStatus);
+publicVariable QEGVAR(sys_core,externalStatus);

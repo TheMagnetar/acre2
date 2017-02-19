@@ -8,5 +8,6 @@ PREP(initRadio);
 PREP(isExternalRadioAvailable);
 PREP(isExternalRadioUsed);
 PREP(isRadioShared);
+PREP(setExternalUseStatus);
 PREP(startUsingExternalRadio);
 PREP(stopUsingExternalRadio);

@@ -17,6 +17,6 @@
 
 params ["_radioId"];
 
-_externalStatus = HASH_GET(QGVAR(externalStatus),_radioId);
+_externalStatus = HASH_GET(EGVAR(sys_core,externalStatus),_radioId);
 
 _externalStatus
