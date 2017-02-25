@@ -11,3 +11,10 @@ PREP(isRadioShared);
 PREP(setExternalUseStatus);
 PREP(startUsingExternalRadio);
 PREP(stopUsingExternalRadio);
+
+// ACE interaction
+PREP(checkListChildrenActions);
+PREP(checkReturnGive);
+PREP(childrenActions);
+PREP(listChildrenActions);
+PREP(radioCheckChildrenActions);
