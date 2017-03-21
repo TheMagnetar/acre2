@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Unique radio identity <STRING>
- * 1: End used <OBJECT>
+ * 1: End user <OBJECT>
  *
  * Return Value:
  * None
@@ -23,4 +23,10 @@ params ["_radioID", "_endUser"];
 // Add the radio to the player
 ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 
-[format ["Start using %1", _radioId]] call EFUNC(sys_core,displayNotification);
+// Set it as active radio.
+[_radioId] call EFUNC(api,setCurrentRadio);
+
+private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
+private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
+
+[format [localize LSTRING(hintTake), _displayName, name ([_radioId] call FUNC(getExternalRadioOwner))]] call EFUNC(sys_core,displayNotification);
