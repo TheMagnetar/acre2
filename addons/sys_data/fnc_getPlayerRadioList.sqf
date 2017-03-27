@@ -20,11 +20,7 @@ private _radioList = [];
 
 if (!ACRE_IS_SPECTATOR) then {
     private _weapons = [acre_player] call EFUNC(sys_core,getGear);
-    _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio)};
-
-    // Remove those radios that are being actively used by other players.
-    private _externalRadiosInUse = _radioList select {_x call EFUNC(sys_external,isExternalRadioUsed)};
-    _radioList = _radioList - _externalRadiosInUse;
+    _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio) && {!(_x call EFUNC(sys_external,isExternalRadioUsed))}};
 
     // External radios not in the inventory of the player
     {

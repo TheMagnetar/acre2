@@ -6,7 +6,7 @@
  * 0: Infantry unit <OBJECT>
  *
  * Return Value:
- * Unit can interact with external radios <BOOL>
+ * Can interact with external radios <BOOL>
  *
  * Example:
  * [cursorTarget] call acre_sys_external_isExternalRadioAvailable
@@ -16,6 +16,9 @@
 #include "script_component.hpp"
 
 params ["_target"];
+
+// Check first distance to the unit
+if ((_target distance acre_player) > EXTERNAL_RADIO_MAXDISTANCE) exitWith {false};
 
 // Action is available if the unit has shared radios.
 private _sharedRadios = [_target] call FUNC(getSharedExternalRadios);
@@ -28,9 +31,5 @@ private _radiosInUse = _sharedRadios select {[_x] call FUNC(isExternalRadioUsed)
     };
 } forEach _radiosInUse;
 
-if (count _sharedRadios > 0) exitWith { true };
-
 // If the player has external radios in use, the action to give or return radios should be also available
-if (count ACRE_ACTIVE_EXTERNAL_RADIOS > 0) exitWith {true};
-
-false
+count _sharedRadios > 0 || {count ACRE_ACTIVE_EXTERNAL_RADIOS > 0}
