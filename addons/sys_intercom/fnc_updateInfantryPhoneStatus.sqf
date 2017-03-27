@@ -24,8 +24,8 @@ params ["_vehicle", "_unit", "_action", ["_intercomNetwork", CREW_INTERCOM], ["_
 
 private "_intercomText";
 switch (_intercomNetwork) do {
-    case CREW_INTERCOM: {_interComText = "(" + localize LSTRING(crewIntercom) + ")";};
-    case PASSENGER_INTERCOM: {_interComText = "(" + localize LSTRING(passengerIntercom) + ")";};
+    case CREW_INTERCOM: {_interComText = "(" + localize CREW_STRING + ")";};
+    case PASSENGER_INTERCOM: {_interComText = "(" + localize LSTRING(passenger) + ")";};
 };
 
 switch (_action) do {
@@ -33,6 +33,9 @@ switch (_action) do {
         // Stop using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
+        if (_intercomNetwork == PASSENGER_INTERCOM) then {
+            [_vehicle, _unit, 0] call FUNC(updatePassengerIntercomStatus);
+        };
         [format [localize LSTRING(infantryPhoneDisconnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
     case 1: {
@@ -52,10 +55,14 @@ switch (_action) do {
         // Switch to another intercom network
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
-        [format [localize LSTRING(infantryPhoneSwitched), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
 };
 
 // Hook for third party mods with actions when picking returning infantry phone
-private _event = _vehicle getVariable [QGVAR(eventInfantryPhone), FUNC(noApiFunction)];
-[_vehicle, _unit, _action] call (missionNamespace getVariable [_event, FUNC(noApiFunction)]);
+private _event = _vehicle getVariable [QGVAR(eventInfantryPhone), ""];
+if (_event != "") then {
+    _event = missionNamespace getVariable [_event, {}];
+    if (_event isEqualType {} && !(_event isEqualTo {})) then {
+        [_vehicle, _unit, _action] call _event;
+    };
+};

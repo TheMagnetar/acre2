@@ -17,5 +17,5 @@
  */
 #include "script_component.hpp"
 
-
-systemChat format ["This was the function"];
+// @todo Remove once API is stable
+TRACE_1("This is the dummy function for infantry phone: %1",QFUNC(noApiFunction));

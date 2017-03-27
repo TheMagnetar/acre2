@@ -1,4 +1,3 @@
-PREP(intercomActions);
 PREP(intercomConfig);
 PREP(isIntercomAvailable);
 PREP(noApiFunction);
@@ -22,5 +21,5 @@ PREP(updateInfantryPhoneStatus);
 PREP(passengerIntercomAction);
 PREP(passengerIntercomChildrenActions);
 PREP(passengerIntercomConfig);
-PREP(unitInPassengerIntercom);
+PREP(isInPassengerIntercom);
 PREP(updatePassengerIntercomStatus);
