@@ -2,7 +2,7 @@
 
 class CfgAcreComponents {
     class ACRE_ComponentBase;
-    
+
     class ACRE_BaseAntenna: ACRE_ComponentBase {
         type = ACRE_COMPONENT_ANTENNA;
         simple = true;
@@ -23,7 +23,7 @@ class CfgAcreComponents {
         height = 1;
         binaryGainFile = QPATHTOF(binary\Thales_100cm_Whip_gain.aba);
     };
-    
+
     class ACRE_100CM_VHF_BNC : ACRE_BaseAntenna {
         name = "1 Meter VHF Antenna BNC";
         shortName = "1M VHF BNC";
@@ -31,7 +31,7 @@ class CfgAcreComponents {
         height = 1;
         binaryGainFile = QPATHTOF(binary\Thales_100cm_Whip_gain.aba);
     };
-    
+
     class ACRE_2HALFINCH_UHF_TNC: ACRE_BaseAntenna {
         name = "2.5 Inch UHF Antenna AN/PRC-343 ONLY";
         shortName = "2.5 INCH UHF PRC343";
