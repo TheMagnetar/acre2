@@ -22,7 +22,7 @@ private _side = "CENTER";
 
 if (!(isNil "_radio")) then {
     private _isInitialized = [_radio] call EFUNC(sys_data,isRadioInitialized);
-//    diag_log format["STATE WTF: %1=%2", _radio, _state];
+
     if (_isInitialized) then {
         private _spatial = [_radio, "getSpatial"] call EFUNC(sys_data,dataEvent);
 
