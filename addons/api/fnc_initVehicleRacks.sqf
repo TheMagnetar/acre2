@@ -35,7 +35,7 @@ private _automaticInitClasses = ["LandVehicle", "Air", "Ship_F"];
 } forEach _automaticInitClasses;
 
 if (!_found) then {
-    [_vehicle] call EFUNC(sys_rack,initActionVehicle);
+    [QGVAR(initVehicleRacks), [_vehicle]] call CBA_fnc_globalEventJIP;
 };
 
 true
