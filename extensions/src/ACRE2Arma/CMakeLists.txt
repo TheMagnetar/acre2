@@ -61,6 +61,7 @@ add_subdirectory(controller)
 add_subdirectory(data)
 add_subdirectory(arma2ts)
 add_subdirectory(signal)
+add_subdirectory(ecs)
 add_subdirectory(acre)
 
 add_subdirectory(tests)

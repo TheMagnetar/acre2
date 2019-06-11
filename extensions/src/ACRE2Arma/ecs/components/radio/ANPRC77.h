@@ -1,0 +1,8 @@
+#ifndef SRC_COMPONENTS_RADIO_ANPRC77_H_
+#define SRC_COMPONENTS_RADIO_ANPRC77_H_
+
+#include "../../Types.h"
+
+
+
+#endif /* SRC_COMPONENTS_RADIO_ANPRC77_H_ */
