@@ -24,8 +24,8 @@ bool acre::rack::Controller::registerRack(const arguments &args_, std::string &r
 
     position.dir = args_.as_float(4);
 
-    entt::registry &registry = acre::Registry::get().getRegistry();
-    entt::entity rack = acre::rack::System::get().create(rackId, position, registry);
+    std::shared_ptr<entt::registry> registry = acre::Registry::get().getRegistry();
+    entt::entity rack = acre::rack::System::get().create(rackId, position, *registry);
 
     if (rack != entt::null) {
         result_ = "1";
@@ -38,10 +38,10 @@ bool acre::rack::Controller::registerRack(const arguments &args_, std::string &r
 
 bool acre::rack::Controller::deleteRack(const arguments &args_, std::string &result_) {
 
-    entt::registry &registry = acre::Registry::get().getRegistry();
+    std::shared_ptr<entt::registry> registry = acre::Registry::get().getRegistry();
     const std::string rackId = args_.as_string(0);
 
-    acre::rack::System::get().destroy(rackId, registry);
+    acre::rack::System::get().destroy(rackId, *registry);
 
     result_ = "1";
     return true;

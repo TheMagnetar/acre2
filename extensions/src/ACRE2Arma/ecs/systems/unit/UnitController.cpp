@@ -24,8 +24,8 @@ bool acre::unit::Controller::registerUnit(const arguments &args_, std::string &r
 
     position.dir = args_.as_float(4);
 
-    entt::registry &registry = acre::Registry::get().getRegistry();
-    entt::entity unit = acre::unit::System::get().create(unitId, position, registry);
+    std::shared_ptr<entt::registry> registry = acre::Registry::get().getRegistry();
+    entt::entity unit = acre::unit::System::get().create(unitId, position, *registry);
 
     if (unit != entt::null) {
         result_ = "1";
@@ -38,10 +38,10 @@ bool acre::unit::Controller::registerUnit(const arguments &args_, std::string &r
 
 bool acre::unit::Controller::deleteUnit(const arguments &args_, std::string &result_) {
 
-    entt::registry &registry = acre::Registry::get().getRegistry();
+    std::shared_ptr<entt::registry> registry = acre::Registry::get().getRegistry();
     const std::string unitId = args_.as_string(0);
 
-    acre::unit::System::get().destroy(unitId, registry);
+    acre::unit::System::get().destroy(unitId, *registry);
 
     result_ = "1";
     return true;

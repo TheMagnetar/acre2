@@ -6,7 +6,8 @@
 
 namespace acre {
     namespace unit {
-        class Controller : controller_module {
+        class Controller : public controller_module {
+        public:
             Controller();
             ~Controller();
 

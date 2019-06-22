@@ -8,6 +8,7 @@ acre_set_linker_options()
 SOURCE_GROUP("main" FILES ${CONTROLLER_SOURCES})
 
 add_library(acre_controller_static STATIC ${CONTROLLER_SOURCES})
+set_target_properties (acre_controller_static PROPERTIES CXX_STANDARD 17)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 

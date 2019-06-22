@@ -1,7 +1,11 @@
 #include "controller.hpp"
 #include "simulation/object.hpp"
-#include "antenna\antenna_library.hpp"
+#include "antenna/antenna_library.hpp"
 #include "signal.hpp"
+
+#include "systems/Controller.h"
+#include "registry.h"
+
 #include <chrono>
 
 #ifdef _DEBUG
@@ -28,6 +32,12 @@ namespace acre {
             _initiated = true;
             acre::pbo::fileloader::get().poke();
             add_module(std::make_shared<acre::signal::controller>());
+
+            // ECS
+            add_module(std::make_shared<acre::rack::Controller>());
+            add_module(std::make_shared<acre::radio::Controller>());
+            add_module(std::make_shared<acre::unit::Controller>());
+            add_module(std::make_shared<acre::vehicle::Controller>());
         }
         return true;
     }

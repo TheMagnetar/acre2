@@ -12,9 +12,9 @@ namespace acre {
             HearableTransmissions();
             virtual ~HearableTransmissions();
 
-            void update(entt::registry &registry, const entt::entity &radioEntity);
+            void update(entt::registry &registry_, const entt::entity &unit_, const std::vector<entt::entity> &txRadios_);
         private:
-            void updatePrc343(entt::registry &registry);
+            void updatePrc343(entt::registry &registry_, const entt::entity &rxRadioEntity_, const entt::entity &txRadioEntity_);
         };
     } /* namespace radio */
 } /* namespace acre */

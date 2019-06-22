@@ -53,6 +53,41 @@ namespace acre {
             xtcss
         };
 
+        enum class TransmittingMode : uint8_t {
+            plain,
+            encrypted,
+            sincgars,
+            sem70AKW
+        };
+
+        enum class Waveform : uint8_t {
+            vulos,
+            havequick,
+            sincgars,
+            hpw,
+            p25
+        };
+
+        enum class CryptoMode : uint8_t {
+            none,
+            kg84,
+            andvt,
+            aes,
+            fascinator,
+            vinson,
+            satellite,
+            des
+        };
+
+        enum class KeyType : uint8_t {
+            tek,
+            kek,
+            Hopset,
+            Lockout,
+            tsk,
+            tek3
+        };
+
         enum class RadioType : uint8_t {
             generic,
             anprc77,

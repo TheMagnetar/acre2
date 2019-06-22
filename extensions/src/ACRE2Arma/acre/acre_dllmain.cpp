@@ -2,6 +2,7 @@
 #include "logging.hpp"
 #include "signal.hpp"
 #include "controller.hpp"
+
 INITIALIZE_EASYLOGGINGPP
 
 BOOLEAN WINAPI DllMain(IN HINSTANCE hDllHandle,

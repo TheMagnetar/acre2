@@ -6,7 +6,8 @@
 
 namespace acre {
     namespace radio {
-        class Controller : controller_module {
+        class Controller : public controller_module {
+        public:
             Controller();
             ~Controller();
 

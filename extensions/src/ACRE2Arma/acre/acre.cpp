@@ -53,27 +53,20 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     if (command.size() < 1) {
         output[0] = 0x00;
         return;
-    }
-    if (command == "version") {
+    } if (command == "version") {
         result = ACRE_VERSION;
-    }
-    else if (command == "echo") {
+    } else if (command == "echo") {
         result = function;
-    }
-    else if (command == "async") {
+    } else if (command == "async") {
         _threaded = true;
         result = "0";
-    }
-    else if (command == "stop") {
+    } else if (command == "stop") {
         _threaded = false;
-    }
-    else if (command == "process_signal") {
+    } else if (command == "process_signal") {
         _threaded = true;
-    }
-    else if (command == "load_map") {
+    } else if (command == "load_map") {
         _threaded = true;
-    }
-    else if (command == "signal_map") {
+    } else if (command == "signal_map") {
         _threaded = true;
     }
 

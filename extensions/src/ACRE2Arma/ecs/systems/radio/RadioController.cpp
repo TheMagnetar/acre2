@@ -24,8 +24,8 @@ bool acre::radio::Controller::registerRadio(const arguments &args_, std::string 
 
     position.dir = args_.as_float(4);
 
-    entt::registry &registry = acre::Registry::get().getRegistry();
-    entt::entity radio = acre::radio::System::get().create(unitId, position, registry);
+    std::shared_ptr<entt::registry> registry = acre::Registry::get().getRegistry();
+    entt::entity radio = acre::radio::System::get().create(unitId, position, *registry);
 
     if (radio != entt::null) {
         result_ = "1";
@@ -38,10 +38,10 @@ bool acre::radio::Controller::registerRadio(const arguments &args_, std::string 
 
 bool acre::radio::Controller::deleteRadio(const arguments &args_, std::string &result_) {
 
-    entt::registry &registry = acre::Registry::get().getRegistry();
+    std::shared_ptr<entt::registry> registry = acre::Registry::get().getRegistry();
     const std::string radioId = args_.as_string(0);
 
-    acre::radio::System::get().destroy(radioId, registry);
+    acre::radio::System::get().destroy(radioId, *registry);
 
     result_ = "1";
     return true;

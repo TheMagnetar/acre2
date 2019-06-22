@@ -6,6 +6,7 @@
 
 struct Position {
     acre::vector3_t pos;
+    acre::vector3_t headDirection;
     acre::float32_t dir;
 };
 

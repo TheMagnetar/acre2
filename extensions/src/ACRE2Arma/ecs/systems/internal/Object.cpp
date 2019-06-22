@@ -30,6 +30,17 @@ void acre::Object::updatePosition(const Position pos_, entt::registry &registry_
     pos = pos_;
 }
 
+void acre::Object::updatePosition(const ACRE_VECTOR pos_, const ACRE_VECTOR dir_, entt::registry &registry_, const entt::entity &objectEntity_) {
+    Position posInfo(registry_.get<Position>(objectEntity_));
+
+    posInfo.pos.x = pos_.x;
+    posInfo.pos.y = pos_.y;
+    posInfo.pos.z = pos_.z;
+
+
+
+}
+
 void acre::Object::destroy(const std::string &id_, entt::registry &registry_) {
     auto object = getById(id_, registry_);
     registry_.destroy(object);

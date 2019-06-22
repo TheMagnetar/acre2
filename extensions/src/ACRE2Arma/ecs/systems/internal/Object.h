@@ -1,6 +1,8 @@
 #ifndef SRC_SYSTEMS_OBJECT_H_
 #define SRC_SYSTEMS_OBJECT_H_
 
+#include "ACRE_VECTOR.h"
+
 #include "../../Types.h"
 #include "../../entt/entt.hpp"
 
@@ -13,6 +15,7 @@ namespace acre {
         ~Object();
 
         void updatePosition(const Position pos_, entt::registry &registry_, const entt::entity &objectEntity_);
+        void updatePosition(const ACRE_VECTOR pos_, entt::registry &registry_, const entt::entity &objectEntity_);
 
         virtual entt::entity create(const std::string id_, const Position initialPos_, entt::registry &registry_);
         virtual entt::entity getById(const std::string &id_, entt::registry &registry_);
